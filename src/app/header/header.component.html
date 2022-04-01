@@ -1,0 +1,18 @@
+<div class="header">
+
+    <div class="bloc" style="width: 20%; justify-content: space-around;">
+        <span routerLink="/pokedex" style="cursor: pointer;" [class.route-selected]="activeRoute == '/' || activeRoute == '/pokedex'">Pokedex</span>
+        <span *ngIf="isConnected()">|</span>
+        <span *ngIf="isConnected()" routerLink="/mon-equipe" style="cursor: pointer;" [class.route-selected]="activeRoute == '/mon-equipe'">Mon équipe</span>
+    </div>
+
+    <div  class="bloc" style="width: 50%;">
+        <img src="/assets/img/logo.png" style="width: 200px;">
+    </div>
+
+    <div  class="bloc" style="width: 20%;">
+        <button mat-raised-button *ngIf="!isConnected()" routerLink="/connexion">Se connecter</button>
+        <button mat-raised-button *ngIf="isConnected()" (click)="deconnexion()">Se déconnecter</button>
+    </div>
+
+</div>

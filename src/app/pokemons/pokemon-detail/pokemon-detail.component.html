@@ -1,0 +1,53 @@
+<ng-container *ngIf="pokemon">
+  <mat-card>
+
+    <mat-grid-list cols="2" rowHeight="100px">
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
+        <img mat-card-lg-image [src]="'../assets/img/official-artwork/'+pokemon.id+'.png'" >
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <h1>{{pokemon.name}}</h1>
+        <button mat-button (click)="playAudio(pokemon.id)">
+          <mat-icon aria-hidden="false" aria-label="play_circle_outline">play_circle_outline</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-chip-list *ngFor="let type of pokemon.types">
+          <mat-chip>{{type}}</mat-chip>
+        </mat-chip-list>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <p>Taille: {{ pokemon.height}} m</p>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <p>No. {{pokemon.id | number:'3.0-0'}} </p>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <p>Poids: {{ pokemon.weight}} kg</p>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <p> {{pokemon.description}} </p>
+      </mat-grid-tile>
+
+
+
+    </mat-grid-list>
+
+  </mat-card>
+
+
+
+  <audio controls autoplay hidden>
+    <source src="../assets/audio/{{pokemon.id}}.mp3" type="audio/ogg">
+
+  Your browser does not support the audio element.
+  </audio>
+
+
+</ng-container>

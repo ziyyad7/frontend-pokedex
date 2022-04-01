@@ -1,0 +1,11 @@
+<mat-card *ngIf="pokemonInfos">
+
+    <div style="display: flex; flex-flow: column; justify-content: space-between; align-items: center; gap: 20px;">
+        <img mat-card-lg-image src="assets/img/official-artwork/{{pokemonInfos.id}}.png">
+
+        <mat-card-title>{{pokemonInfos.name}}</mat-card-title>
+
+        <mat-icon (click)="emitClickIdEventEmitter(true)" style="color:tomato; cursor: pointer;">delete</mat-icon>
+
+    </div>
+</mat-card>

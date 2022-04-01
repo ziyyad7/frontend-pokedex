@@ -1,0 +1,24 @@
+<div style="width: 100%; height: calc(100% - 150px);" class="container">
+
+    <button *ngIf="!ajouter" mat-raised-button (click)="ajouter=true">Ajouter un pokemon</button>
+    <button *ngIf="ajouter"  mat-raised-button (click)="ajouter=false">Masquer la liste</button>
+
+    <div *ngIf="ajouter" style="height: 100%; width: 100%; display: flex; justify-content: space-between;">
+
+        <app-pokemon-list (eventPokemonSelect)="ajoutPokemon($event)" style="width: 33%; height: 100%;"></app-pokemon-list>
+
+        <div style="width:66%;" class="container-vignette">
+            <div *ngFor="let id of tabIdEquipe; let i = index">
+                <app-vignette-equipe [idPokemon]="id" (clickIdEventEmitter)="deletePokemon(i)"></app-vignette-equipe>
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="!ajouter" class="container-vignette">
+        <div *ngFor="let id of tabIdEquipe; let i = index">
+            <app-vignette-equipe [idPokemon]="id" (clickIdEventEmitter)="deletePokemon(i)"></app-vignette-equipe>
+        </div>
+    </div>
+
+</div>
